@@ -57,6 +57,8 @@ declare namespace NodeJS {
     INITIAL_ADMIN_USER_ID?: string;
     /** Token required to open a /ws connection; falls back to ADMIN_API_KEY. */
     WS_AUTH_TOKEN?: string;
+    /** "true" requires a signed wallet challenge on creator endpoints. Default: false */
+    WALLET_AUTH_REQUIRE_SIGNATURE?: string;
     /** Integer byte threshold above which responses are compressed. Default: 1024 */
     COMPRESSION_THRESHOLD?: string;
     /** Integer gzip level 0–9. Default: 6 */
@@ -164,6 +166,17 @@ declare namespace NodeJS {
     OTEL_ZIPKIN_ENDPOINT?: string;
     /** "true" enables the Zipkin exporter. */
     OTEL_ZIPKIN_ENABLED?: string;
+
+    // ── Frontend telemetry (#770) ───────────────────────────────────────
+    /** Max accepted body size for POST /v1/telemetry (e.g. "64kb"). Default: 64kb */
+    TELEMETRY_BODY_SIZE_LIMIT?: string;
+    /** "true" forwards accepted reports to the OTLP exporter. Default: false */
+    TELEMETRY_OTLP_ENABLED?: string;
+    /** Integer ms per-IP telemetry rate-limit window. Default: RATE_LIMIT_WINDOW_MS */
+    TELEMETRY_RATE_LIMIT_WINDOW_MS?: string;
+    /** Integer max telemetry requests per IP per window. Default: 120 */
+    TELEMETRY_RATE_LIMIT_MAX?: string;
+
     /** Maximum request body size accepted by Express. */
     BODY_SIZE_LIMIT?: string;
     /** Optional CA bundle path for database TLS. */
